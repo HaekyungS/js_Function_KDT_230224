@@ -1,30 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <script>
     let body = document.body;
-    let m = ["+","-","*","/"];
+    let m = ["+", "-", "*", "/"];
     let div = document.createElement("div");
     body.appendChild(div);
-    
 
-    function Calculation(x,y){
-      for(i=0;i<m.length;i++){
-        
-          div.innerHTML=x+m[i]+y;
-        
+    let inputX = document.createElement("input");
+    inputX.setAttribute("id", "CalcX");
+    // inputX.setAttribute("type", "number");
+    inputX.setAttribute("onchange", "Calculation()");
+    div.appendChild(inputX); //숫자를 입력할 박스
+    //input 하나 더 추가해서 y 넣는다 해도 onchange인데 가능하까 일단해
+
+    // let inputY = document.createElement("input");
+    // inputY.setAttribute("id", "CalcY");
+    // inputY.setAttribute("type", "number");
+    // inputY.setAttribute("onchange", "Calculation()");
+    // div.appendChild(inputY);
+
+    let divs = document.createElement("div");
+    // divs.setAttribute("id","result");
+    div.appendChild(divs); // 입력값을 출력할 div
+    console.dir(divs)
+
+    function Calculation(x) {
+      for (j = 0; j < m.length; j++) {
+        let p = document.createElement("p");
+        p.innerText = x;
+        //  x + " " + m[j] + " " + x + " = ";
+        divs.appendChild(p);
       }
-
-
     }
+    let a = document.getElementById('CalcX').value;
+    divs.innerHTML = Calculation(a);
+    // let y = document.getElementById('CalcY').value;
+    // console.log(x);
+    // console.log(y);
+    //x,y가 숫자가 아니라 그런가! 근데 입력해도 콘솔로 안보임 뭔가 잘못됐으
 
-    
+
+
+
+
   </script>
 </body>
+
 </html>
