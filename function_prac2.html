@@ -11,38 +11,39 @@
 <body>
   <script>
     let body = document.body;
-    let m = ["+", "-", "*", "/"];
+    // let m = ["+", "-", "*", "/"];
     let div = document.createElement("div");
     body.appendChild(div);
 
     let inputX = document.createElement("input");
     inputX.setAttribute("id", "CalcX");
-    // inputX.setAttribute("type", "number");
+    inputX.setAttribute("type", "number");
     inputX.setAttribute("onchange", "Calculation()");
     div.appendChild(inputX); //숫자를 입력할 박스
     //input 하나 더 추가해서 y 넣는다 해도 onchange인데 가능하까 일단해
 
-    // let inputY = document.createElement("input");
-    // inputY.setAttribute("id", "CalcY");
-    // inputY.setAttribute("type", "number");
-    // inputY.setAttribute("onchange", "Calculation()");
-    // div.appendChild(inputY);
+    let inputY = document.createElement("input");
+    inputY.setAttribute("id", "CalcY");
+    inputY.setAttribute("type", "number");//데이터타입변환
+    inputY.setAttribute("onchange", "Calculation()");
+    div.appendChild(inputY);
 
     let divs = document.createElement("div");
-    // divs.setAttribute("id","result");
     div.appendChild(divs); // 입력값을 출력할 div
-    console.dir(divs)
 
-    function Calculation(x) {
-      for (j = 0; j < m.length; j++) {
+    function Calculation(x,y) {
+      // for (j = 0; j < m.length; j++) {
         let p = document.createElement("p");
-        p.innerText = x;
-        //  x + " " + m[j] + " " + x + " = ";
-        divs.appendChild(p);
-      }
+        let a = document.getElementById('CalcX').value;
+        let b = document.getElementById('CalcY').value;
+        //원하는 input의 value값을 밖으로 뺐으니 안돼짘ㅋㅋㅋㅋ
+        //인제 문제가 뭐냐면 사칙연산이 안됨 케케케케켘케케케
+        console.log(typeof(a));
+        p.innerText = a+b;
+        divs.appendChild(p);//옛날거 있다면 지우고 새거 넣으라고 해줘야함.
+      // }
     }
-    let a = document.getElementById('CalcX').value;
-    divs.innerHTML = Calculation(a);
+
     // let y = document.getElementById('CalcY').value;
     // console.log(x);
     // console.log(y);
