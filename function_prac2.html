@@ -11,47 +11,53 @@
 <body>
   <script>
     let body = document.body;
-    // let m = ["+", "-", "*", "/"];
+    body.style.cssText = "width:100vw; height:100vh; margin:0;";
+    let m = ["+", "-", "*", "/"];
     let div = document.createElement("div");
+    div.style.cssText="width:100%; height:100%; text-align:center";
+    div.innerHTML = "아래 두개의 숫자를 입력해주시면,<br> 사칙연산이 계산됩니다:)<br/><br/>"
     body.appendChild(div);
 
     let inputX = document.createElement("input");
     inputX.setAttribute("id", "CalcX");
-    inputX.setAttribute("type", "number");
-    inputX.setAttribute("onchange", "Calculation()");
+    inputX.setAttribute("size", "5");
     div.appendChild(inputX); //숫자를 입력할 박스
-    //input 하나 더 추가해서 y 넣는다 해도 onchange인데 가능하까 일단해
 
     let inputY = document.createElement("input");
     inputY.setAttribute("id", "CalcY");
-    inputY.setAttribute("type", "number");//데이터타입변환
+    inputY.setAttribute("size", "5");
     inputY.setAttribute("onchange", "Calculation()");
+    // onchange 가 두군데 다 있으면 X값만 넣어도 p에 값이 생기니까 b만.
     div.appendChild(inputY);
 
     let divs = document.createElement("div");
     div.appendChild(divs); // 입력값을 출력할 div
 
     function Calculation(x,y) {
-      // for (j = 0; j < m.length; j++) {
+      for (j = 0; j < m.length; j++) {
         let p = document.createElement("p");
         let a = document.getElementById('CalcX').value;
         let b = document.getElementById('CalcY').value;
-        //원하는 input의 value값을 밖으로 뺐으니 안돼짘ㅋㅋㅋㅋ
-        //인제 문제가 뭐냐면 사칙연산이 안됨 케케케케켘케케케
-        console.log(typeof(a));
-        p.innerText = a+b;
+        let result;
+
+        a = Number(a);
+        b = Number(b);
+        // 데이터 타입 변환은 했음. 인풋에 데이터를 2개로 구분하는 게 가능한가.
+
+        if(j===0){
+          result = a+b;
+        }else if(j===1){
+          result = a-b;
+        }else if(j===2){
+          result = a*b;
+        }else{
+          result = a/b;
+        }
+        p.style.cssText="border:0.5px solid blue;"
+        p.innerText=a+m[j]+b+" = "+result;
         divs.appendChild(p);//옛날거 있다면 지우고 새거 넣으라고 해줘야함.
-      // }
+      }
     }
-
-    // let y = document.getElementById('CalcY').value;
-    // console.log(x);
-    // console.log(y);
-    //x,y가 숫자가 아니라 그런가! 근데 입력해도 콘솔로 안보임 뭔가 잘못됐으
-
-
-
-
 
   </script>
 </body>
